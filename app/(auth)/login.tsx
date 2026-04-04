@@ -14,7 +14,7 @@ import { Colors } from "@/constants/colors";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useAuthStore } from "@/store/authStore";
-import { verifyEmail } from "@/libs/verifyEmail";
+import { verifyEmail } from "@/libs/validations";
 
 export default function LoginScreen() {
 
@@ -77,7 +77,7 @@ export default function LoginScreen() {
     <View style={styles.container}>
 
       <View style={styles.glow} />
-      
+
       <SafeAreaView style={styles.safeArea} edges={["top", "bottom"]}>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
