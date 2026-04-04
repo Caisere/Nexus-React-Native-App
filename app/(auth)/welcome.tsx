@@ -4,17 +4,15 @@ import { router } from "expo-router";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const { width, height } = Dimensions.get("window");
+// const { width, height } = Dimensions.get("window");
 
 export default function WelcomeScreen() {
   return (
     <View style={styles.container}>
-      {/* Background gradient effect */}
       <View style={styles.gradientTop} />
       <View style={styles.gradientBottom} />
 
       <SafeAreaView style={styles.safeArea} edges={["top", "bottom"]}>
-        {/* Top section — branding */}
         <View style={styles.brandSection}>
           <View style={styles.logoContainer}>
             <Text style={styles.logoIcon}>✦</Text>
@@ -23,7 +21,6 @@ export default function WelcomeScreen() {
           <Text style={styles.tagline}>Connect with your community</Text>
         </View>
 
-        {/* Middle section — feature highlights */}
         <View style={styles.featuresSection}>
           <FeatureItem
             icon="👥"
