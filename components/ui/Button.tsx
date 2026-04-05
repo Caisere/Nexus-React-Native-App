@@ -4,7 +4,7 @@ import { Colors } from "@/constants/colors";
 interface ButtonProps {
   title: string;
   onPress: () => void;
-  variant?: "primary" | "outline" | "ghost";
+  variant?: "primary" | "outline" | "ghost" | "destructive";
   loading?: boolean;
   disabled?: boolean;
 }
@@ -25,6 +25,7 @@ export function Button({
         variant === "primary" && styles.primary,
         variant === "outline" && styles.outline,
         variant === "ghost" && styles.ghost,
+        variant === "destructive" && styles.destructive,
         (pressed || disabled) && styles.pressed,
       ]}
     >
@@ -64,6 +65,9 @@ const styles = StyleSheet.create({
   },
   ghost: {
     backgroundColor: "transparent",
+  },
+  destructive: {
+    backgroundColor: Colors.error,
   },
   pressed: {
     opacity: 0.7,
