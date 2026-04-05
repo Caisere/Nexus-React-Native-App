@@ -100,7 +100,7 @@ export default function SignupScreen() {
         },
         "cghjhfhhkjkgjhhjbhj.jhggfffghhh.ijhj",
       );
-    } catch (error) {
+    } catch {
       setErrors({ email: "Something went wrong. Please try again."});
     } finally {
       setLoading(false);
@@ -177,7 +177,7 @@ export default function SignupScreen() {
 
             {/* actions section */}
             <View style={styles.actions}>
-              
+
               <Button
                 title="Create account"
                 onPress={handleSignup}

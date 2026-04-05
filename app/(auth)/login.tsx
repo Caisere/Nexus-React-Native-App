@@ -66,7 +66,7 @@ export default function LoginScreen() {
         },
         "tskhjkdd.sthjsdbbfjjkssdsfd.sdhdujff",
       );
-    } catch (error) {
+    } catch {
       setErrors({ email: "Invalid email or password" });
     } finally {
       setLoading(false);
