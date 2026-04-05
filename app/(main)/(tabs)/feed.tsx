@@ -20,7 +20,7 @@ export default function FeedScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const [newPostContent, setNewPostContent] = useState("");
 
-  const user = useAuthStore((state) => state.user);
+  const { user } = useAuthStore();
   const { posts, toggleLike, addPost } = useFeedStore();
 
   const handlePost = () => {
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
-    position: 'relative'
+    position: "relative",
   },
   safeArea: {
     flex: 1,
