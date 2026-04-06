@@ -1,3 +1,4 @@
+import { Colors } from "@/constants/colors";
 import { useAuthStore } from "@/store/authStore";
 import { Redirect, Stack } from "expo-router";
 
@@ -8,5 +9,13 @@ export default function AuthLayout() {
     return <Redirect href="/(main)/(tabs)/feed" />;
   }
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        contentStyle: { backgroundColor: Colors.background },
+        animation: "fade",
+      }}
+    />
+  );
 }

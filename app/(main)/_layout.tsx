@@ -1,5 +1,6 @@
 import { Redirect, Stack } from 'expo-router';
 import { useAuthStore } from '@/store/authStore';
+import { Colors } from '@/constants/colors';
 
 export default function AppLayout() {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
@@ -8,5 +9,13 @@ export default function AppLayout() {
     return <Redirect href="/(auth)/welcome" />;
   }
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        contentStyle: { backgroundColor: Colors.background },
+        animation: "fade",
+      }}
+    />
+  );
 }
