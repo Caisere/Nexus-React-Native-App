@@ -57,7 +57,7 @@ export default function WelcomeScreen() {
             variant="ghost"
             onPress={() => router.push("/(auth)/login")}
           />
-          <Text className="text-center text-text-muted text-xs leading-[18px] mt-2">
+          <Text className="text-center text-text-muted text-xs leading-[18px] mt-2 will-change-variable">
             By continuing you agree to our{" "}
             <Text className="text-primary-light font-medium">
               Terms of Service
@@ -91,7 +91,7 @@ function FeatureItem({
         <Text className="text-base font-semibold text-text-primary">
           {title}
         </Text>
-        <Text className="text-sm text-text-secondary leading-5">
+        <Text className="text-sm text-text-secondary leading-5 will-change-variable">
           {description}
         </Text>
       </View>
