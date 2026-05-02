@@ -1,27 +1,34 @@
 import { Button } from "@/components/ui/Button";
-import { Colors } from "@/constants/colors";
 import { router } from "expo-router";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // const { width, height } = Dimensions.get("window");
 
 export default function WelcomeScreen() {
   return (
-    <View style={styles.container}>
-      <View style={styles.gradientTop} />
-      <View style={styles.gradientBottom} />
+    <View className="flex-1 bg-background">
+      <View className="absolute -top-25 -left-25 w-96 h-96 bg-primary rounded-[200px] opacity-15" />
+      <View className="absolute -bottom-40 -right-24 w-[500px] h-[500px] bg-primary-dark rounded-[250px] opacity-20" />
 
-      <SafeAreaView style={styles.safeArea} edges={["top", "bottom"]}>
-        <View style={styles.brandSection}>
-          <View style={styles.logoContainer}>
-            <Text style={styles.logoIcon}>✦</Text>
+      <SafeAreaView
+        style={styles.safeArea}
+        // className="flex-1 px-6 justify-between"
+        edges={["top", "bottom"]}
+      >
+        <View className="items-center pt-10 gap-3">
+          <View className="w-18 h-18 rounded-3xl bg-primary items-center justify-center mb-2">
+            <Text className="text-[32px] text-text-primary">✦</Text>
           </View>
-          <Text style={styles.appName}>Nexus</Text>
-          <Text style={styles.tagline}>Connect with your community</Text>
+          <Text className="text-[42px] font-extrabold text-text-primary -tracking-tight">
+            Nexus
+          </Text>
+          <Text className="text-base text-text-secondary tracking-wide">
+            Connect with your community
+          </Text>
         </View>
 
-        <View style={styles.featuresSection}>
+        <View className="gap-6 py-10">
           <FeatureItem
             icon="👥"
             title="Build your circle"
@@ -40,7 +47,7 @@ export default function WelcomeScreen() {
         </View>
 
         {/* Bottom section — actions */}
-        <View style={styles.actionsSection}>
+        <View className="gap-3 pb-4">
           <Button
             title="Create an account"
             onPress={() => router.push("/(auth)/signup")}
@@ -50,10 +57,15 @@ export default function WelcomeScreen() {
             variant="ghost"
             onPress={() => router.push("/(auth)/login")}
           />
-          <Text style={styles.terms}>
+          <Text className="text-center text-text-muted text-xs leading-[18px] mt-2 will-change-variable">
             By continuing you agree to our{" "}
-            <Text style={styles.termsLink}>Terms of Service</Text> and{" "}
-            <Text style={styles.termsLink}>Privacy Policy</Text>
+            <Text className="text-primary-light font-medium">
+              Terms of Service
+            </Text>{" "}
+            and{" "}
+            <Text className="text-primary-light font-medium">
+              Privacy Policy
+            </Text>
           </Text>
         </View>
       </SafeAreaView>
@@ -71,129 +83,26 @@ function FeatureItem({
   description: string;
 }) {
   return (
-    <View style={featureStyles.container}>
-      <View style={featureStyles.iconContainer}>
-        <Text style={featureStyles.icon}>{icon}</Text>
+    <View className="flex-row items-center gap-4">
+      <View className="w-13 h-13 rounded-2xl bg-surface-light items-center justify-center border border-border">
+        <Text className="text-2xl">{icon}</Text>
       </View>
-      <View style={featureStyles.textContainer}>
-        <Text style={featureStyles.title}>{title}</Text>
-        <Text style={featureStyles.description}>{description}</Text>
+      <View className="flex-1 gap-1">
+        <Text className="text-base font-semibold text-text-primary">
+          {title}
+        </Text>
+        <Text className="text-sm text-text-secondary leading-5 will-change-variable">
+          {description}
+        </Text>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.background,
-  },
-  gradientTop: {
-    position: "absolute",
-    top: -100,
-    left: -100,
-    width: 400,
-    height: 400,
-    borderRadius: 200,
-    backgroundColor: Colors.primary,
-    opacity: 0.15,
-  },
-  gradientBottom: {
-    position: "absolute",
-    bottom: -150,
-    right: -100,
-    width: 500,
-    height: 500,
-    borderRadius: 250,
-    backgroundColor: Colors.primaryDark,
-    opacity: 0.2,
-  },
   safeArea: {
     flex: 1,
     paddingHorizontal: 24,
     justifyContent: "space-between",
-  },
-  brandSection: {
-    alignItems: "center",
-    paddingTop: 40,
-    gap: 12,
-  },
-  logoContainer: {
-    width: 72,
-    height: 72,
-    borderRadius: 24,
-    backgroundColor: Colors.primary,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 8,
-  },
-  logoIcon: {
-    fontSize: 32,
-    color: Colors.textPrimary,
-  },
-  appName: {
-    fontSize: 42,
-    fontWeight: "800",
-    color: Colors.textPrimary,
-    letterSpacing: -1,
-  },
-  tagline: {
-    fontSize: 16,
-    color: Colors.textSecondary,
-    letterSpacing: 0.3,
-  },
-  featuresSection: {
-    gap: 24,
-    paddingVertical: 40,
-  },
-  actionsSection: {
-    gap: 12,
-    paddingBottom: 16,
-  },
-  terms: {
-    textAlign: "center",
-    color: Colors.textMuted,
-    fontSize: 12,
-    lineHeight: 18,
-    marginTop: 8,
-  },
-  termsLink: {
-    color: Colors.primaryLight,
-    fontWeight: "500",
-  },
-});
-
-const featureStyles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 16,
-  },
-  iconContainer: {
-    width: 52,
-    height: 52,
-    borderRadius: 16,
-    backgroundColor: Colors.surfaceLight,
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 1,
-    borderColor: Colors.border,
-  },
-  icon: {
-    fontSize: 24,
-  },
-  textContainer: {
-    flex: 1,
-    gap: 4,
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: Colors.textPrimary,
-  },
-  description: {
-    fontSize: 14,
-    color: Colors.textSecondary,
-    lineHeight: 20,
   },
 });
